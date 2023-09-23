@@ -78,7 +78,7 @@ import os
              print(f"Pattern: {pattern} | Count: {count}") 
   
  def interpret_ascii_data(ascii_data): 
-     # Replace control characters and non-printable characters with spaces 
+      
      printable_data = ''.join(char if 32 <= ord(char) <= 126 else ' ' for char in ascii_data) 
      return printable_data 
   
