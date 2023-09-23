@@ -1,7 +1,7 @@
 import os 
- import chardet 
-  
- def analyze_binary_data(file_path, analysis_mode='all'): 
+import chardet 
+
+def analyze_binary_data(file_path, analysis_mode='all'): 
      try: 
          # Check if the file exists 
          if not os.path.isfile(file_path): 
@@ -42,12 +42,12 @@ import os
      except Exception as e: 
          print(f"An error occurred: {str(e)}") 
   
- def display_file_info(file_path, data): 
+def display_file_info(file_path, data): 
      file_size = len(data) 
      print(f"File Path: {file_path}") 
      print(f"File Size: {file_size} bytes") 
   
- def display_byte_statistics(data): 
+def display_byte_statistics(data): 
      byte_counts = {} 
      for byte in data: 
          byte_hex = format(byte, '02X')  # Convert byte to uppercase hexadecimal 
@@ -60,7 +60,7 @@ import os
      for byte_hex, count in byte_counts.items(): 
          print(f"Byte: 0x{byte_hex} | Count: {count}") 
   
- def find_repeating_patterns(hex_data): 
+def find_repeating_patterns(hex_data): 
      print("\nRepeating 4-byte patterns:") 
      patterns = {}  # Dictionary to store patterns and their counts 
      pattern_length = 8  # 8 characters represent 4 bytes in hexadecimal 
@@ -77,12 +77,12 @@ import os
          if count > 1: 
              print(f"Pattern: {pattern} | Count: {count}") 
   
- def interpret_ascii_data(ascii_data): 
+def interpret_ascii_data(ascii_data): 
       
      printable_data = ''.join(char if 32 <= ord(char) <= 126 else ' ' for char in ascii_data) 
      return printable_data 
   
- if __name__ == "__main__": 
+if __name__ == "__main__": 
      file_path = input("Enter the path to your binary file: ")  # Prompt the user for the binary file path 
      analysis_mode = input("Choose analysis mode ('all', 'info', 'stats', 'repeating', 'ascii', 'encoding'): ").lower() 
      analyze_binary_data(file_path, analysis_mode)
