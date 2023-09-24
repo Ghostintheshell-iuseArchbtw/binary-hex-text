@@ -1,6 +1,5 @@
 # binary-hex-text.py
-# acts as an interface where you specify
-# log files containting unknown code  
 
-# finds log file to perform analysis   
-# parses logs and returns output
+# CLI driven tool that takes files 
+# Converts binary to hexideciml to ASCII
+# If everthing goes well finally text
