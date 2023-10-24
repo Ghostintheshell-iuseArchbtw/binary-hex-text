@@ -1,6 +1,8 @@
 import os
 import binascii
 import chardet
+import argparse
+import textwrap
 
 def analyze_binary_data(file_path, analysis_mode='all'):
     try:
@@ -81,7 +83,20 @@ def interpret_ascii_data(ascii_data):
     printable_data = ''.join(char if 32 <= ord(char) <= 126 else ' ' for char in ascii_data)
     return printable_data
 
+def main():
+    parser = argparse.ArgumentParser(
+        description='Analyze binary data in a file.',
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog=textwrap.dedent('''
+        Example:
+        analyze_binary_data /path/to/binary/file --analysis-mode all
+        ''')
+    )
+    parser.add_argument('file_path', help='Path to the binary file to analyze')
+    parser.add_argument('--analysis-mode', choices=['all', 'info', 'stats', 'repeating', 'ascii', 'encoding'],
+                        default='all', help='Choose analysis mode (default: all)')
+    args = parser.parse_args()
+    analyze_binary_data(args.file_path, args.analysis_mode)
+
 if __name__ == "__main__":
-    file_path = input("Enter the path to your binary file: ")
-    analysis_mode = input("Choose analysis mode ('all', 'info', 'stats', 'repeating', 'ascii', 'encoding'): ").lower()
-    analyze_binary_data(file_path, analysis_mode)
+    main()
